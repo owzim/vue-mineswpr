@@ -1,0 +1,18 @@
+%font-with-fallback {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+}
+
+@mixin font-regular() {
+    @extend %font-with-fallback;
+    font-weight: 400;
+}
+
+@mixin font-semibold() {
+    @extend %font-with-fallback;
+    font-weight: 500;
+}
+
+@mixin font-bold() {
+    @extend %font-with-fallback;
+    font-weight: 700;
+}

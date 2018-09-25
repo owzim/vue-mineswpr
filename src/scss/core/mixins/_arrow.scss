@@ -1,0 +1,29 @@
+@mixin arrow(
+    $width: 30px,
+    $height: 30px,
+    $direction: top,
+    $color: #f00,
+    $display: block
+) {
+    display: $display;
+
+    border: $width / 2 solid transparent;
+    border-top-width: $height / 2;
+    border-right-width: $width / 2;
+    border-bottom-width: $height / 2;
+    border-left-width: $width / 2;
+
+    width: 0;
+    height: 0;
+    content: '';
+
+    @if $direction == top {
+        border-bottom-color: $color;
+    } @else if $direction == right {
+        border-left-color: $color;
+    } @else if $direction == bottom {
+        border-top-color: $color;
+    } @else if $direction == left {
+        border-right-color: $color;
+    }
+}

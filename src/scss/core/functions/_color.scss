@@ -1,0 +1,95 @@
+@function brighten($color, $amount) {
+    @return mix(#fff, $color, $amount);
+}
+
+@function dimm($color, $amount) {
+    @return mix(#000, $color, $amount);
+}
+
+
+//
+// COLORS
+//
+
+$f-color-colors: () !default;
+$f-color-colors-invert: false !default;
+$f-color-colors-fallback: #f00 !default;
+
+@function color($color-name) {
+
+    $color: $f-color-colors-fallback; // default
+
+    @if map-has-key($f-color-colors, $color-name) {
+        $color: map-get($f-color-colors, $color-name);
+    } @else {
+        @warn "@function color(): color '#{$color-name}' does not exist, defaulting to '#{$color}'";
+    }
+
+    @if $f-color-colors-invert {
+        $color: invert($color);
+    }
+
+    @return $color;
+}
+
+@function faint-color($color-name, $transparency: 0) {
+
+    $color: $f-color-colors-fallback; // default
+
+    @if map-has-key($f-color-colors, $color-name) {
+        $color: map-get($f-color-colors, $color-name);
+    }
+
+    @if $f-color-colors-invert {
+        $color: invert($color);
+    }
+
+    @return transparentize($color, $transparency);
+}
+
+@function darken-color($color-name, $amount) {
+    $color: color($color-name);
+
+    @return mix(#000, $color, ($amount * 100));
+}
+
+@function lighten-color($color-name, $amount) {
+    $color: color($color-name);
+
+    @return mix(#fff, $color, ($amount * 100));
+}
+
+@function mix-color($color-name-1, $color-name-2, $percent: 50) {
+
+    $color-1: $f-color-colors-fallback; // default
+    $color-2: $f-color-colors-fallback; // default
+
+    @if map-has-key($f-color-colors, $color-name-1) {
+        $color-1: map-get($f-color-colors, $color-name-1);
+    }
+    @if map-has-key($f-color-colors, $color-name-2) {
+        $color-2: map-get($f-color-colors, $color-name-2);
+    }
+
+    @if $f-color-colors-invert {
+        $color-1: invert($color-1);
+        $color-2: invert($color-2);
+    }
+
+    @return mix($color-1, $color-2, $percent);
+}
+
+@function hidden-color($color-name) {
+
+    $color: transparent; // default
+
+    @if map-has-key($f-color-colors, $color-name) {
+        $color: transparentize(map-get($f-color-colors, $color-name), 1);
+    }
+
+    @if $f-color-colors-invert {
+        $color: transparentize(invert($color), 1);
+    }
+
+    @return $color;
+}

@@ -1,0 +1,13 @@
+@mixin center-children() {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+@mixin center-children-vertically() {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}

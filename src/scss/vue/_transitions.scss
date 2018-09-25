@@ -1,0 +1,62 @@
+%vue-transition {
+    transition-duration: 5s;
+}
+
+.fade {
+
+    &-enter-active,
+    &-leave-active {
+        @extend %vue-transition;
+    }
+
+    &-enter,
+    &-leave-to {
+        @extend %vue-transition;
+        opacity: 0;
+    }
+}
+
+.slide-down {
+
+    &-enter-active,
+    &-leave-active {
+        @extend %vue-transition;
+        transform: translateY(0);
+    }
+
+    &-enter,
+    &-leave-to {
+        @extend %vue-transition;
+        transform: translateY(-100%);
+    }
+}
+
+.slide-up {
+
+    &-enter-active,
+    &-leave-active {
+        @extend %vue-transition;
+        transform: translateY(0);
+    }
+
+    &-enter,
+    &-leave-to {
+        @extend %vue-transition;
+        transform: translateY(100%);
+    }
+}
+
+.scale {
+
+    &-enter-active,
+    &-leave-active {
+        @extend %vue-transition;
+        transform: scale(1);
+    }
+
+    &-enter,
+    &-leave-to {
+        @extend %vue-transition;
+        transform: scale(0);
+    }
+}

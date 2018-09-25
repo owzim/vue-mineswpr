@@ -1,0 +1,51 @@
+// globals
+$g-debug: true;
+$g-font-size: 16;
+$g-min-width: 320;
+$g-transition-duration: .1s;
+$g-transition-timing-function: ease;
+$g-transition-property: fill, box-shadow, color,  background, transform, opacity, border-color;
+// $g-transition-property: color;
+
+// rem()
+$f-rem-base-font-size: $g-font-size;
+$f-rem-one-to-pixel: false;
+
+// color()
+$f-color-colors: (
+    background: #f9f9f9,
+    foreground: #2c3e50,
+    foreground-secondary: #444,
+    accent: #42b983,
+    accent-secondary: #727f80,
+    danger: #c00,
+);
+$f-color-colors-invert: false;
+$f-color-colors-fallback: #f0f;
+
+$m-frame-sizes: (
+    tiny: 5,
+    small: 10,
+    medium: 15,
+    large: 25,
+    grand: 40,
+    huge: 60,
+);
+
+// size()
+$f-size-sizes: (
+    line: 1,
+    card: 120,
+    font-tiny: 11,
+    font-small: 12,
+    font-medium: 14,
+    font-regular: $g-font-size,
+    font-large: $g-font-size * 1.1,
+    font-headline: 24,
+    font-huge: 50,
+);
+$f-size-sizes: map-merge($f-size-sizes, $m-frame-sizes);
+$f-size-fallback: 10;
+$f-size-auto-rem: true;
+
+@import 'core';

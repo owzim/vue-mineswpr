@@ -1,0 +1,39 @@
+@import 'rem';
+@import 'em';
+
+//
+// SIZES
+//
+
+$f-size-sizes: () !default;
+$f-size-fallback: 10 !default;
+$f-size-auto-rem: false !default;
+
+@function size-plain($size-name) {
+    $size: $f-size-fallback; // default
+
+    @if map-has-key($f-size-sizes, $size-name) {
+        $size: map-get($f-size-sizes, $size-name);
+    } @else {
+        @warn "@function size(): size '#{$size-name}' does not exist, defaulting to '#{$size}'";
+    }
+
+    @return $size;
+}
+
+@function size($size-name) {
+
+    @if $f-size-auto-rem {
+        @return rem(size-plain($size-name));
+    } @else {
+        @return size-plain($size-name);
+    }
+}
+
+@function rem-size($size-name) {
+    @return rem(size-plain($size-name));
+}
+
+@function em-size($size-name) {
+    @return em(size-plain($size-name));
+}
